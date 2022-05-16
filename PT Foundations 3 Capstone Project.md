@@ -17,4 +17,4 @@ My Team                                     Rival
 5. Megagross (Steel/Psychic)
 6. Rayquaza  (Dragon/Flying)
 
-To get the proper type match ups, I will be using a match up chart - which I have included along with the wireframe for this project that will be pushed to Github. 
+To get the proper type match ups, I will be using a match up chart - which I have included along with the wireframe for this project that will be pushed to Github.
