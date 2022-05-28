@@ -17,7 +17,23 @@ app.get("/api/myPokemon", (req, res) => {
     Latias,
     Metagross,
     Rayquaza];
-res.status(200).send(myPokemon)
+
+    let randomIndex = Math.floor(Math.random() * myPokemon.length);
+    let friendlyPokemon = myPokemon[randomIndex];
+
+    res.status(200).send(myPokemon);
 });
 
+app.get("/api/eliteFour", (req, res) => {
+    const eliteFour = [
+        Swellow,
+        Shroomish,
+        Numel,
+        Marshtomp
+    ];
 
+    let randomIndex = Math.floor(Math.random() * eliteFour.length);
+    let enemyPokemon = eliteFour[randomIndex];
+
+    res.status(200).send(eliteFour);
+});
