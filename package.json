@@ -1,7 +1,6 @@
 {
   "name": "foundations-capstone-project",
   "version": "1.0.0",
-  "description": "",
   "main": "pokemon.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,10 +17,10 @@
   },
   "homepage": "https://github.com/jake-enger/Foundations-Capstone#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "nodemon": "^2.0.16"
-  }
+  },
+  "description": ""
 }
-
-
