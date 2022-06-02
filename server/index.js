@@ -35,4 +35,8 @@ app.get("/api/eliteFour", (req, res) => {
     res.status(200).send(eliteFour)
 });
 
+app.get("/api/comparePkMn", (req, res) => {
+    
+})
+
 app.listen(4000, () => console.log('Server running on port 4000'))
