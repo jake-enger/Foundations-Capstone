@@ -5,6 +5,7 @@
     </head>
 <body class= 'btn-group'>
     <button id = "myPokemonBtn"> Get a Pokemon! </button> <!-- This button will randomly generate a pokemon from a pool of 6-->
+    <button id = "fight"> FIGHT! </button> <!-- This button is what will coompare the effectiveness of your pokemon versus the enemy pokemon-->
     <button id = "eliteFourBtn"> Face your opponent. </button> <!-- This buttin will select a pokemon from the pool of enemy pokemon-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -17,6 +18,14 @@
               alert(data);
             });
       };  
+
+    document.getElementById("comparePkMnBtn").onclick = function () {
+        axios.het("http://localhost:4000/api/comparePkMn/")
+            .then(function (response) {
+                const data = response.data;
+                alert(data);
+            });
+    };
 
 
 
