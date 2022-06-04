@@ -30,7 +30,7 @@ const metagross = new Pokemon ('Metagross', 'Steel' , effective());
 const rayquaza = new Pokemon ('Rayquaza', 'Dragon' , effective());
 
 
-//baddies
+//bad guys
 const swellow = new Pokemon ('Swellow', 'Normal', effective());
 const shroomish = new Pokemon ('Shroomish', 'Grass', effective());
 const numel = new Pokemon ('Numel', 'Ground', effective())
@@ -53,10 +53,15 @@ app.get("/api/myPokemon", (req, res) => {
 });
 
 app.get("/api/comparePkMn", (req, res) => {
-    if (friendlyPokemon >= enemyPokemon)
-    console.log('Super Effective!')
+    if (friendlyPokemon({$effective}) >= enemyPokemon({$effective}))
+            console.log('Super Effective!')
+   else if (friendlyPokemon({$effective}) === enemyPokemon({$effective}))
+            console.log('No special damage')
+   else (friendlyPokemon({$effective}) <= enemyPokemon({$effective}))
+            console.log('Not very effective...')
 
-});
+    res.status(200).send(comparePkMn)
+});   
 
 app.get("/api/eliteFour", (req, res) => {
     const eliteFour = [
@@ -72,6 +77,5 @@ app.get("/api/eliteFour", (req, res) => {
     res.status(200).send(eliteFour)
 });
 
-console.log(blaziken)
 
 app.listen(4000, () => console.log('Server running on port 4000'))
