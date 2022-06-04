@@ -15,14 +15,27 @@ class Pokemon {
     }
 }
 
+const blaziken = new Pokemon ('Blaziken', fire, );
+const shedinja = new Pokemon ('Shedinja', bug, );
+const kyogre = new Pokemon ('Kyogre', water, );
+const latias = new Pokemon ('Latias', dragon, );
+const metagross = new Pokemon ('Metagross', steel );
+const rayquaza = new Pokemon ('Rayquaza', dragon);
+
+const swellow = new Pokemon ('Swellow', normal );
+const shroomish = new Pokemon ('Shroomish', grass );
+const numel = new Pokemon ('Numel', ground)
+const marshtomp = new Pokemon ('Marshtomp', water)
+
+
 
 app.get("/api/myPokemon", (req, res) => {
-    const myPokemon = ['Blaziken',
-    'Shedinja',
-    'Kyogre',
-    'Latias',
-    'Metagross',
-    'Rayquaza'];
+    const myPokemon = [blaziken,
+    shedinja,
+    kyogre,
+    latias,
+    metagross,
+    rayquaza];
 
     let randomIndex = Math.floor(Math.random() * myPokemon.length);
     let friendlyPokemon = myPokemon[randomIndex];
@@ -32,10 +45,10 @@ app.get("/api/myPokemon", (req, res) => {
 
 app.get("/api/eliteFour", (req, res) => {
     const eliteFour = [
-        'Swellow',
-        'Shroomish',
-        'Numel',
-        'Marshtomp'
+        swellow,
+        shroomish,
+        numel,
+        marshtomp
     ];
 
     let randomIndex = Math.floor(Math.random() * eliteFour.length);
