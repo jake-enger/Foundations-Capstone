@@ -6,29 +6,35 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-
 class Pokemon {
-    constructor (name, type, effective) {
+    constructor (name, type) {
         this.name = name
         this.type = type;
-        this.effectiveness = randomIndex = Math.floor(Math.random() * );
+        
+        };
     }
+    
+function effective() {
+    var effectiveness =  Math.floor(Math.random() * 3);
+    console.log(effectiveness)
 }
 
+
+
 //friendlies
-const blaziken = new Pokemon ('Blaziken', fire, );
-const shedinja = new Pokemon ('Shedinja', bug, );
-const kyogre = new Pokemon ('Kyogre', water, );
-const latias = new Pokemon ('Latias', dragon, );
-const metagross = new Pokemon ('Metagross', steel );
-const rayquaza = new Pokemon ('Rayquaza', dragon);
+const blaziken = new Pokemon ('Blaziken', 'Fire' , effective());
+const shedinja = new Pokemon ('Shedinja', 'Bug' , effective());
+const kyogre = new Pokemon ('Kyogre', 'Water' , effective());
+const latias = new Pokemon ('Latias', 'Dragon', effective());
+const metagross = new Pokemon ('Metagross', 'Steel' , effective());
+const rayquaza = new Pokemon ('Rayquaza', 'Dragon' , effective());
 
 
 //baddies
-const swellow = new Pokemon ('Swellow', normal );
-const shroomish = new Pokemon ('Shroomish', grass );
-const numel = new Pokemon ('Numel', ground)
-const marshtomp = new Pokemon ('Marshtomp', water)
+const swellow = new Pokemon ('Swellow', 'Normal', effective());
+const shroomish = new Pokemon ('Shroomish', 'Grass', effective());
+const numel = new Pokemon ('Numel', 'Ground', effective())
+const marshtomp = new Pokemon ('Marshtomp', 'Water', effective())
 
 
 
@@ -46,6 +52,12 @@ app.get("/api/myPokemon", (req, res) => {
     res.status(200).send(myPokemon)
 });
 
+app.get("/api/comparePkMn", (req, res) => {
+    if (friendlyPokemon >= enemyPokemon)
+    console.log('Super Effective!')
+
+});
+
 app.get("/api/eliteFour", (req, res) => {
     const eliteFour = [
         swellow,
@@ -60,9 +72,6 @@ app.get("/api/eliteFour", (req, res) => {
     res.status(200).send(eliteFour)
 });
 
-
-app.get("/api/comparePkMn", (req, res) => {
-
-})
+console.log(blaziken)
 
 app.listen(4000, () => console.log('Server running on port 4000'))
