@@ -11,10 +11,11 @@ class Pokemon {
     constructor (name, type, effective) {
         this.name = name
         this.type = type;
-        this.effectiveness = effective;
+        this.effectiveness = randomIndex = Math.floor(Math.random() * );
     }
 }
 
+//friendlies
 const blaziken = new Pokemon ('Blaziken', fire, );
 const shedinja = new Pokemon ('Shedinja', bug, );
 const kyogre = new Pokemon ('Kyogre', water, );
@@ -22,6 +23,8 @@ const latias = new Pokemon ('Latias', dragon, );
 const metagross = new Pokemon ('Metagross', steel );
 const rayquaza = new Pokemon ('Rayquaza', dragon);
 
+
+//baddies
 const swellow = new Pokemon ('Swellow', normal );
 const shroomish = new Pokemon ('Shroomish', grass );
 const numel = new Pokemon ('Numel', ground)
