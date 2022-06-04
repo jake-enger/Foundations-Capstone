@@ -7,6 +7,15 @@ app.use(cors())
 app.use(express.json())
 
 
+class Pokemon {
+    constructor (name, type, effective) {
+        this.name = name
+        this.type = type;
+        this.effectiveness = effective;
+    }
+}
+
+
 app.get("/api/myPokemon", (req, res) => {
     const myPokemon = ['Blaziken',
     'Shedinja',
@@ -35,8 +44,9 @@ app.get("/api/eliteFour", (req, res) => {
     res.status(200).send(eliteFour)
 });
 
+
 app.get("/api/comparePkMn", (req, res) => {
-    
+
 })
 
 app.listen(4000, () => console.log('Server running on port 4000'))
