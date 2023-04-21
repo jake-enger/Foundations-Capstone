@@ -3,40 +3,45 @@
     <head>
         <title> Pokemon Strengthness Tester</title>
     </head>
-<body class= 'btn-group'>
-    <button id = "myPokemonBtn"> Get a Pokemon! </button> <!-- This button will randomly generate a pokemon from a pool of 6-->
-    <button id = "fightBtn"> FIGHT! </button> <!-- This button is what will coompare the effectiveness of your pokemon versus the enemy pokemon-->
-    <button id = "eliteFourBtn"> Find your opponent. </button> <!-- This buttin will select a pokemon from the pool of enemy pokemon-->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <body class='btn-group'>
+        <button id="myPokemonBtn">Get a Pokemon!</button> <!-- This button will randomly generate a pokemon from a pool of 6-->
+        <button id="fightBtn">FIGHT!</button> <!-- This button is what will compare the effectiveness of your pokemon versus the enemy pokemon-->
+        <button id="eliteFourBtn">Find your opponent.</button> <!-- This button will select a pokemon from the pool of enemy pokemon-->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script>
+        <script>
+            document.getElementById("myPokemonBtn").onclick = function () {
+                axios.get("http://localhost:4000/api/myPokemon/")
+                    .then(function (response) {
+                        const data = response.data;
+                        console.log(data);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            };
 
-    document.getElementById("myPokemonBtn").onclick = function () {
-        axios.get("http://localhost:4000/api/myPokemon/")
-            .then(function (response) {
-              const data = response.data;
-              console.log(data);
-            });
-      };  
+            document.getElementById("fightBtn").onclick = function () {
+                axios.get("http://localhost:4000/api/comparePkMn/")
+                    .then(function (response) {
+                        const data = response.data;
+                        console.log(data);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            };
 
-    document.getElementById("fightBtn").onclick = function () {
-        axios.get("http://localhost:4000/api/comparePkMn/")
-            .then(function (response) {
-                const data = response.data;
-                console.log(data);
-            });
-    };
-
-
-    document.getElementById("eliteFourBtn").onclick = function () {
-        axios.get("http://localhost:4000/api/eliteFour/")
-            .then(function (response) {
-              const data = response.data;
-              console.log(data);
-            });
-      };
-
-
-    </script>
-   </body>
+            document.getElementById("eliteFourBtn").onclick = function () {
+                axios.get("http://localhost:4000/api/eliteFour/")
+                    .then(function (response) {
+                        const data = response.data;
+                        console.log(data);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            };
+        </script>
+    </body>
 </html>

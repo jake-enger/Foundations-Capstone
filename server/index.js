@@ -7,75 +7,62 @@ app.use(cors())
 app.use(express.json())
 
 class Pokemon {
-    constructor (name, type) {
-        this.name = name
-        this.type = type;
-        
-        };
-    }
-    
-function effective() {
-    var effectiveness =  Math.floor(Math.random() * 3);
-    console.log(effectiveness)
+  constructor (name, type) {
+    this.name = name
+    this.type = type
+  }
+  
+  effective () {
+    return Math.floor(Math.random() * 3)
+  }
 }
 
-
-
 //friendlies
-const blaziken = new Pokemon ('Blaziken', 'Fire' , effective());
-const shedinja = new Pokemon ('Shedinja', 'Bug' , effective());
-const kyogre = new Pokemon ('Kyogre', 'Water' , effective());
-const latias = new Pokemon ('Latias', 'Dragon', effective());
-const metagross = new Pokemon ('Metagross', 'Steel' , effective());
-const rayquaza = new Pokemon ('Rayquaza', 'Dragon' , effective());
-
+const blaziken = new Pokemon('Blaziken', 'Fire')
+const shedinja = new Pokemon('Shedinja', 'Bug')
+const kyogre = new Pokemon('Kyogre', 'Water')
+const latias = new Pokemon('Latias', 'Dragon')
+const metagross = new Pokemon('Metagross', 'Steel')
+const rayquaza = new Pokemon('Rayquaza', 'Dragon')
 
 //bad guys
-const swellow = new Pokemon ('Swellow', 'Normal', effective());
-const shroomish = new Pokemon ('Shroomish', 'Grass', effective());
-const numel = new Pokemon ('Numel', 'Ground', effective())
-const marshtomp = new Pokemon ('Marshtomp', 'Water', effective())
-
-
+const swellow = new Pokemon('Swellow', 'Normal')
+const shroomish = new Pokemon('Shroomish', 'Grass')
+const numel = new Pokemon('Numel', 'Ground')
+const marshtomp = new Pokemon('Marshtomp', 'Water')
 
 app.get("/api/myPokemon", (req, res) => {
-    const myPokemon = [blaziken,
-    shedinja,
-    kyogre,
-    latias,
-    metagross,
-    rayquaza];
+  const myPokemon = [blaziken, shedinja, kyogre, latias, metagross, rayquaza]
 
-    let randomIndex = Math.floor(Math.random() * myPokemon.length);
-    let friendlyPokemon = myPokemon[randomIndex];
+  let randomIndex = Math.floor(Math.random() * myPokemon.length)
+  let friendlyPokemon = myPokemon[randomIndex]
 
-    res.status(200).send(myPokemon)
-});
+  res.status(200).send(friendlyPokemon)
+})
 
 app.get("/api/comparePkMn", (req, res) => {
-    if (friendlyPokemon({$effective}) >= enemyPokemon({$effective}))
-            console.log('Super Effective!')
-   else if (friendlyPokemon({$effective}) === enemyPokemon({$effective}))
-            console.log('No special damage')
-   else (friendlyPokemon({$effective}) <= enemyPokemon({$effective}))
-            console.log('Not very effective...')
+  const friendlyPokemon = new Pokemon(req.query.friendlyName, req.query.friendlyType)
+  const enemyPokemon = new Pokemon(req.query.enemyName, req.query.enemyType)
 
-    res.status(200).send(comparePkMn)
-});   
+  if (friendlyPokemon.effective() >= enemyPokemon.effective()) {
+    console.log('Super Effective!')
+    res.status(200).send('Super Effective!')
+  } else if (friendlyPokemon.effective() === enemyPokemon.effective()) {
+    console.log('No special damage')
+    res.status(200).send('No special damage')
+  } else {
+    console.log('Not very effective...')
+    res.status(200).send('Not very effective...')
+  }
+})
 
 app.get("/api/eliteFour", (req, res) => {
-    const eliteFour = [
-        swellow,
-        shroomish,
-        numel,
-        marshtomp
-    ];
+  const eliteFour = [swellow, shroomish, numel, marshtomp]
 
-    let randomIndex = Math.floor(Math.random() * eliteFour.length);
-    let enemyPokemon = eliteFour[randomIndex];
+  let randomIndex = Math.floor(Math.random() * eliteFour.length)
+  let enemyPokemon = eliteFour[randomIndex]
 
-    res.status(200).send(eliteFour)
-});
-
+  res.status(200).send(enemyPokemon)
+})
 
 app.listen(4000, () => console.log('Server running on port 4000'))
